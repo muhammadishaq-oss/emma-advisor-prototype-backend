@@ -17,7 +17,7 @@ app.add_middleware(
     CORSMiddleware,
     # allow_origin_regex=[allow_origin_regex,"https://emma-advisor-prototype-yu32.vercel.app"],
     allow_origins=["https://emma-advisor-prototype-yu32.vercel.app"],
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?"
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods including OPTIONS
     allow_headers=["*"],
