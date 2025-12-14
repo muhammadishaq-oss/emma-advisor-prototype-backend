@@ -1,4 +1,5 @@
 import os
+import certifi
 from pathlib import Path
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
@@ -14,4 +15,4 @@ if not DATABASE_URL:
     DATABASE_URL = "mongodb://localhost:27017"
 
 
-client = AsyncIOMotorClient(DATABASE_URL)
+client = AsyncIOMotorClient(DATABASE_URL, tlsCAFile=certifi.where())
