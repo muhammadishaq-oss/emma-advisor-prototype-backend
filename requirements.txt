@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+motor
+beanie
+pydantic
+python-jose
+passlib
+bcrypt==3.2.0
+python-multipart
+python-dotenv
+langchain
+langgraph
+openai
+email-validator
