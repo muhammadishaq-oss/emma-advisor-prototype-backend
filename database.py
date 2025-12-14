@@ -20,5 +20,5 @@ client = AsyncIOMotorClient(
     DATABASE_URL,
     tls=True,
     tlsAllowInvalidCertificates=True,
-    serverSelectionTimeoutMS=60000 # 60s timeout as requested
+    serverSelectionTimeoutMS=5000  # Revert to 5s to prevent startup hang
 )
