@@ -15,10 +15,11 @@ if not DATABASE_URL:
     DATABASE_URL = "mongodb://localhost:27017"
 
 
-# Maximally permissive SSL settings to prevent handshake failures in cloud
+# Use certifi for valid SSL certificates (The Robust Fix)
+# tlsAllowInvalidCertificates caused internal errors, so we use proper CAs now.
 client = AsyncIOMotorClient(
     DATABASE_URL,
     tls=True,
-    tlsAllowInvalidCertificates=True,
-    serverSelectionTimeoutMS=5000  # Revert to 5s to prevent startup hang
+    tlsCAFile=certifi.where(),
+    serverSelectionTimeoutMS=5000
 )
