@@ -15,4 +15,11 @@ if not DATABASE_URL:
     DATABASE_URL = "mongodb://localhost:27017"
 
 
-client = AsyncIOMotorClient(DATABASE_URL, tlsCAFile=certifi.where())
+# Add tlsAllowInvalidCertificates=True to bypass SSL errors in some environments
+# This is a fallback; ideally certifi should handle it.
+client = AsyncIOMotorClient(
+    DATABASE_URL,
+    tlsCAFile=certifi.where(),
+    tls=True,
+    tlsAllowInvalidCertificates=True
+)

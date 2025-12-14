@@ -13,3 +13,4 @@ langgraph
 openai
 email-validator
 certifi
+dnspython
