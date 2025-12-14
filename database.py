@@ -1,4 +1,5 @@
 import os
+import certifi
 from pathlib import Path
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
@@ -14,9 +15,11 @@ if not DATABASE_URL:
     DATABASE_URL = "mongodb://localhost:27017"
 
 
-# Add tlsAllowInvalidCertificates=True to bypass SSL errors in some environments
+# Use tlsAllowInvalidCertificates=True to bypass SSL errors in cloud environments
+# This is often required for MongoDB Atlas when connecting from Render
 client = AsyncIOMotorClient(
     DATABASE_URL,
+    tls=True,
     tlsAllowInvalidCertificates=True,
-    serverSelectionTimeoutMS=5000  # Fail fast (5s) if connection fails
+    serverSelectionTimeoutMS=5000
 )

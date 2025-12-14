@@ -8,6 +8,9 @@ from models import User, Family, College, Milestone, Tip, ChatMessage
 from routers import router
 
 app = FastAPI()
+@app.get("/")
+async def root():
+    return {"message": "Emma Advisor API is running"}
 
 # Configure CORS
 # Allow any localhost origin for development convenience
