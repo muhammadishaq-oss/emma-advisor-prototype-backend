@@ -15,11 +15,10 @@ if not DATABASE_URL:
     DATABASE_URL = "mongodb://localhost:27017"
 
 
-# Use tlsAllowInvalidCertificates=True to bypass SSL errors in cloud environments
-# This is often required for MongoDB Atlas when connecting from Render
+# Maximally permissive SSL settings to prevent handshake failures in cloud
 client = AsyncIOMotorClient(
     DATABASE_URL,
     tls=True,
     tlsAllowInvalidCertificates=True,
-    serverSelectionTimeoutMS=5000
+    serverSelectionTimeoutMS=60000 # 60s timeout as requested
 )
