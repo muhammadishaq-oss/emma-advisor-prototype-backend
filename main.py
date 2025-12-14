@@ -27,7 +27,12 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     # Initialize Beanie with the specific database and models
-    await init_beanie(database=client.emma_advisor_db, document_models=[User, Family, College, Milestone, Tip, ChatMessage])
+    try:
+        await init_beanie(database=client.emma_advisor_db, document_models=[User, Family, College, Milestone, Tip, ChatMessage])
+        print("Database initialized successfully!")
+    except Exception as e:
+        print(f"❌ Database initialization failed: {e}")
+        # We don't raise here so the app can still start and we can see the logs
 
 # Include the API router
 app.include_router(router)

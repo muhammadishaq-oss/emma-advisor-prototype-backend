@@ -1,5 +1,4 @@
 import os
-import certifi
 from pathlib import Path
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
@@ -16,10 +15,8 @@ if not DATABASE_URL:
 
 
 # Add tlsAllowInvalidCertificates=True to bypass SSL errors in some environments
-# This is a fallback; ideally certifi should handle it.
 client = AsyncIOMotorClient(
     DATABASE_URL,
-    tlsCAFile=certifi.where(),
-    tls=True,
-    tlsAllowInvalidCertificates=True
+    tlsAllowInvalidCertificates=True,
+    serverSelectionTimeoutMS=5000  # Fail fast (5s) if connection fails
 )
