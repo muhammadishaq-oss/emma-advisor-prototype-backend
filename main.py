@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from beanie import init_beanie
-from .database import client
-from .models import User, Family, College, Milestone, Tip, ChatMessage
+from database import client
+from models import User, Family, College, Milestone, Tip, ChatMessage
 
 
-from .routers import router
+from routers import router
 
 app = FastAPI()
 
@@ -15,7 +15,9 @@ allow_origin_regex = r"http://(localhost|127\.0\.0\.1)(:\d+)?"
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=allow_origin_regex,
+    # allow_origin_regex=[allow_origin_regex,"https://emma-advisor-prototype-yu32.vercel.app"],
+    allow_origins=["https://emma-advisor-prototype-yu32.vercel.app"],
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?"
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods including OPTIONS
     allow_headers=["*"],

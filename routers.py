@@ -4,13 +4,13 @@ import secrets
 import random
 from datetime import datetime
 
-from .models import User, Family, College, Milestone, Tip, ChatMessage
-from .schemas import (
+from models import User, Family, College, Milestone, Tip, ChatMessage
+from schemas import (
     CollegeMatch, FamilyHQData, SoulScanProfile, SupportCircle,
     UserCreate, UserLogin, Token, InviteResponse, StudentSignup, UserResponse,
     ChatMessageCreate, ChatMessageResponse
 )
-from .auth import get_password_hash, verify_password, create_access_token, get_current_user
+from auth import get_password_hash, verify_password, create_access_token, get_current_user
 
 router = APIRouter()
 

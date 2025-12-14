@@ -8,7 +8,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 
-from .models import User
+from models import User
 
 # Load .env from the same directory as this file
 env_path = Path(__file__).parent / ".env"
