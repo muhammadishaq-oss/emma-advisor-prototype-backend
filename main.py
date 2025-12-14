@@ -9,6 +9,7 @@ from routers import router
 
 app = FastAPI()
 @app.get("/")
+@app.head("/")
 async def root():
     return {"message": "Emma Advisor API is running"}
 
